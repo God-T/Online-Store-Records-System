@@ -56,6 +56,6 @@ the frontend was built with `React js`, and runs on `http://localhost:3000`
 
 # Backend APIs
 
-![Alt text](https://github.com/God-T/Foodchain_Off-chain_DB---Express_Nodejs/blob/main/design.PNG?raw=true "APIs overview of testing data")
+![Alt text](https://github.com/God-T/Online_store-Records-System/blob/master/api_example.PNG?raw=true "APIs overview of testing data")
 
-![Alt text](https://github.com/God-T/Foodchain_Off-chain_DB---Express_Nodejs/blob/main/design.PNG?raw=true "APIs flow of testing data")
+![Alt text](https://github.com/God-T/Online_store-Records-System/blob/master/example_api_flow.PNG?raw=true "APIs flow of testing data")

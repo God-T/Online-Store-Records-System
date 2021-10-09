@@ -12,7 +12,7 @@ class Purchases extends React.Component {
         purchases: [],
         headers: [{ path: "", label: "" }],
         currPage: 1,
-        pageSize: 2,
+        pageSize: 3,
         currSortColumn: { path: "name", order: "asc" },
     };
 

@@ -11,7 +11,7 @@ export default class Products extends Component {
         products: [],
         headers: [{ path: "", label: "" }],
         currPage: 1,
-        pageSize: 2,
+        pageSize: 3,
         currSortColumn: { path: "name", order: "asc" },
     };
     getHeaders = [

@@ -2,7 +2,7 @@
 
 ## Pre-require:
 
-ake sure u having Node.js installed.
+Make sure u having Node.js installed.
 
 Make sure google chrome extensions [Allow CORS: Access-Control-Allow-Origin](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf) installed, and go to `Open options page` -> `Access-Control-Allow-Origin` and set it to `*` (Check [here](https://github.com/God-T/Online_store-Records-System/blob/master/cors-bypass.PNG) for more details)
 

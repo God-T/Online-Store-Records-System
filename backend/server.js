@@ -1,10 +1,11 @@
 const express = require("express");
 const db = require("./DB/dbHelpers"); // get db helper
-
+const cors = require("cors");
 // init server
 const server = express();
+server.use(cors());
 server.use(express.json());
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
     console.log(
         `\n*** Records db server running on http://localhost:${PORT} ***\n`

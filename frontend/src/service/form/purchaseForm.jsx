@@ -16,9 +16,11 @@ class PurchaseForm extends Form {
         this.setState({ customer: this.props.match.params });
         fetch("http://localhost:5000/api/product/all").then(res =>
             res.json().then(products => {
+                console.log("invoke componentDidMount", products.length);
                 this.setState({
                     products,
                 });
+                console.log("invoke componentDidMount", this.state);
             })
         );
     }
@@ -66,9 +68,10 @@ class PurchaseForm extends Form {
                   marginTop: "10px",
                   visibility: "hidden",
               };
+        console.log("this.state.products.length:", this.state.products.length);
         return (
             <div style={{ width: "60%" }}>
-                {this.state.products ? (
+                {!this.state.products.length ? (
                     <React.Fragment>
                         <p> There are no products in the store.</p>
                         <div className="d-flex justify-content-between">

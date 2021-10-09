@@ -4,7 +4,7 @@
 
 Make sure u having Node.js installed.
 
-Make sure google chrome extensions [Allow CORS: Access-Control-Allow-Origin](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf) installed, and go to `Open options page` -> `Access-Control-Allow-Origin` and set it to `*` (Check [here](https://github.com/God-T/Online_store-Records-System/blob/master/cors-bypass.PNG) for more details)
+<!-- Make sure google chrome extensions [Allow CORS: Access-Control-Allow-Origin](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf) installed, and go to `Open options page` -> `Access-Control-Allow-Origin` and set it to `*` (Check [here](https://github.com/God-T/Online_store-Records-System/blob/master/cors-bypass.PNG) for more details) -->
 
 ## Clone this repo:
 
@@ -32,8 +32,6 @@ if db was deleted then run this to create a db: `npm run db-init`
 
 <br/>
 <br/>
-<br/>
-<br/>
 
 # About Project
 
@@ -59,8 +57,6 @@ the frontend was built with `React js`, and runs on `http://localhost:3000`
 
 -   pagination ( page limit was set to 3 for easy testing )
 
-<br/>
-<br/>
 <br/>
 <br/>
 

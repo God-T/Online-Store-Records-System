@@ -53,3 +53,9 @@ the frontend was built with `React js`, and runs on `http://localhost:3000`
 -   sort by tables headers
 
 -   pagination ( page limit was set to 3 for easy testing )
+
+# Backend APIs
+
+![Alt text](https://github.com/God-T/Foodchain_Off-chain_DB---Express_Nodejs/blob/main/design.PNG?raw=true "APIs overview of testing data")
+
+![Alt text](https://github.com/God-T/Foodchain_Off-chain_DB---Express_Nodejs/blob/main/design.PNG?raw=true "APIs flow of testing data")

@@ -54,7 +54,7 @@ the frontend was built with `React js`, and runs on `http://localhost:3000`
 
 -   pagination ( page limit was set to 3 for easy testing )
 
-# Backend APIs
+# How example data created
 
 ![Alt text](https://github.com/God-T/Online_store-Records-System/blob/master/api_example.PNG?raw=true "APIs overview of testing data")
 

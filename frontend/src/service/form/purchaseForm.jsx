@@ -68,31 +68,47 @@ class PurchaseForm extends Form {
               };
         return (
             <div style={{ width: "60%" }}>
-                <form
-                    onSubmit={this.handleSubmit}
-                    style={{ display: "flex", flexDirection: "column" }}
-                >
-                    {this.renderSelect(
-                        this.state.header.name,
-                        this.state.header.label,
-                        this.state.products
-                    )}
-                    <div className="d-flex justify-content-between">
-                        {this.renderButton("Add New Purchase")}
-                        {addButton(
-                            "Cancel",
-                            `/purchases/${this.state.customer.customer_id}/${this.state.customer.customer_name}`,
-                            "btn btn-primary"
-                        )}
-                    </div>
-                </form>
-                <div
-                    className="alert alert-success"
-                    role="alert"
-                    style={alertStyle}
-                >
-                    New purchase added!
-                </div>
+                {this.state.products ? (
+                    <React.Fragment>
+                        <p> There are no products in the store.</p>
+                        <div className="d-flex justify-content-between">
+                            <br />
+                            {addButton(
+                                "Back",
+                                `/purchases/${this.state.customer.customer_id}/${this.state.customer.customer_name}`,
+                                "btn btn-primary"
+                            )}
+                        </div>
+                    </React.Fragment>
+                ) : (
+                    <React.Fragment>
+                        <form
+                            onSubmit={this.handleSubmit}
+                            style={{ display: "flex", flexDirection: "column" }}
+                        >
+                            {this.renderSelect(
+                                this.state.header.name,
+                                this.state.header.label,
+                                this.state.products
+                            )}
+                            <div className="d-flex justify-content-between">
+                                {this.renderButton("Add New Purchase")}
+                                {addButton(
+                                    "Cancel",
+                                    `/purchases/${this.state.customer.customer_id}/${this.state.customer.customer_name}`,
+                                    "btn btn-primary"
+                                )}
+                            </div>
+                        </form>
+                        <div
+                            className="alert alert-success"
+                            role="alert"
+                            style={alertStyle}
+                        >
+                            New purchase added!
+                        </div>
+                    </React.Fragment>
+                )}
             </div>
         );
     }

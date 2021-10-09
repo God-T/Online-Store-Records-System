@@ -1,72 +1,55 @@
 # Getting Start
 
-## Run Backend as Follow
+## Pre-require:
 
-### `cd backend`
+-   Make sure u having Node.js installed.
 
-### `npm install`
+-   Make sure google chrome extensions [Allow CORS: Access-Control-Allow-Origin](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf) installed, and go to `Open options page` -> `Access-Control-Allow-Origin` and set it to `*` (Check [here](https://github.com/God-T/Online_store-Records-System/blob/master/cors-bypass.PNG) for more details)
 
-### `npm install`
+## Clone this repo:
 
-### `npm start`
+-   `git clone https://github.com/God-T/Online_store-Records-System.git`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Run Backend as the following order:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+-   ### `cd backend`
 
-### `npm test`
+-   ### `npm install`
+-   ### `npm start`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Run Frontend as the following order:
 
-### `npm run build`
+-   ### `cd frontend`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-   ### `npm install`
+-   ### `npm start`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+\* Note theres a .db with simple testing examples that already exist in `/Backend/DB`,
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+if u want to reset to an empty db by simply run: `npm run db-reset`,
 
-### `npm run eject`
+if db was deleted then run this to create a db: `npm run db-init`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# About Project
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Technologies:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+This project is a WebApp about an online store application that records customers, products and customer purchases
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+the backend was built with `Node js`, `express js`, database was built with `knex js` + `sqlit3`, and runs on `http://localhost:5000`
 
-## Learn More
+the frontend was built with `React js`, and runs on `http://localhost:3000`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Basic Functions:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+-   list, add and delete products
 
-### Code Splitting
+-   list, add and delete customers
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+-   list, add and delete customers' purchases
 
-### Analyzing the Bundle Size
+## More Functions:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+-   sort by tables headers
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-   pagination ( page limit was set to 3 for easy testing )

@@ -30,6 +30,11 @@ if u want to reset to an empty db then simply run: `npm run db-reset`,
 
 if db was deleted then run this to create a db: `npm run db-init`
 
+<br/>
+<br/>
+<br/>
+<br/>
+
 # About Project
 
 ## Technologies:
@@ -53,6 +58,11 @@ the frontend was built with `React js`, and runs on `http://localhost:3000`
 -   sort by tables headers
 
 -   pagination ( page limit was set to 3 for easy testing )
+
+<br/>
+<br/>
+<br/>
+<br/>
 
 # How example data created
 

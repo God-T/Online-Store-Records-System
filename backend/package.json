@@ -1,0 +1,22 @@
+{
+    "name": "backend-server",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "start": "nodemon server.js",
+        "db-init": "npx knex migrate:latest",
+        "db-reset": "npx knex migrate:rollback && npx knex migrate:latest"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "nodemon": "^2.0.13"
+    },
+    "dependencies": {
+        "express": "^4.17.1",
+        "knex": "^0.95.11",
+        "sqlite3": "^5.0.2"
+    }
+}

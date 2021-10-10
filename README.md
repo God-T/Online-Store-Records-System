@@ -1,8 +1,9 @@
 # Published [here](https://God-T.github.io/Online-Store-Records-System)
-<br/>
-<br/>
 
+The backend was deployed on [Herohu](https://expressjs-mysql--serve-react.herokuapp.com/)
+The frontend was deployed here in [Github](https://github.com/God-T/Online-Store-Records-System/tree/gh-pages)
 
+<br/>
 # Getting Start
 
 ## Pre-require:

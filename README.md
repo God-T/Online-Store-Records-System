@@ -1,3 +1,8 @@
+# Published [here](https://God-T.github.io/Online-Store-Records-System)
+<br/>
+<br/>
+
+
 # Getting Start
 
 ## Pre-require:

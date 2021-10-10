@@ -6,7 +6,7 @@ The frontend was deployed here in [Github](https://github.com/God-T/Online-Store
 
 <br/>
 
-# Getting Start
+# Getting Start to run locally
 
 ## Pre-require:
 

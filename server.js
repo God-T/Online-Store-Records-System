@@ -1,16 +1,17 @@
 const express = require("express");
-const db = require("./DB/dbHelpers"); // get db helper
 const cors = require("cors");
+
+// get db helper
+const db = require("./knex/dbHelpers");
+
 // init server
 const server = express();
 server.use(cors());
 server.use(express.json());
-const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => {
-    console.log(
-        `\n*** Records db server running on http://localhost:${PORT} ***\n`
-    );
-});
+
+server.listen(process.env.PORT || 5000, () =>
+    console.log("\n*** db server has started ***\n")
+);
 
 // server greetings
 server.get("/", (req, res) => {

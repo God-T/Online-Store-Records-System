@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/Online-Store-Records-System/static/css/main.cf8c12ec.chunk.css",
+    "main.js": "/Online-Store-Records-System/static/js/main.0cd9d710.chunk.js",
+    "main.js.map": "/Online-Store-Records-System/static/js/main.0cd9d710.chunk.js.map",
+    "runtime-main.js": "/Online-Store-Records-System/static/js/runtime-main.79f0ba2a.js",
+    "runtime-main.js.map": "/Online-Store-Records-System/static/js/runtime-main.79f0ba2a.js.map",
+    "static/css/2.800798bc.chunk.css": "/Online-Store-Records-System/static/css/2.800798bc.chunk.css",
+    "static/js/2.6adc3d52.chunk.js": "/Online-Store-Records-System/static/js/2.6adc3d52.chunk.js",
+    "static/js/2.6adc3d52.chunk.js.map": "/Online-Store-Records-System/static/js/2.6adc3d52.chunk.js.map",
+    "index.html": "/Online-Store-Records-System/index.html",
+    "static/css/2.800798bc.chunk.css.map": "/Online-Store-Records-System/static/css/2.800798bc.chunk.css.map",
+    "static/css/main.cf8c12ec.chunk.css.map": "/Online-Store-Records-System/static/css/main.cf8c12ec.chunk.css.map",
+    "static/js/2.6adc3d52.chunk.js.LICENSE.txt": "/Online-Store-Records-System/static/js/2.6adc3d52.chunk.js.LICENSE.txt",
+    "static/media/font-awesome.css": "/Online-Store-Records-System/static/media/fontawesome-webfont.f691f37e.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.79f0ba2a.js",
+    "static/css/2.800798bc.chunk.css",
+    "static/js/2.6adc3d52.chunk.js",
+    "static/css/main.cf8c12ec.chunk.css",
+    "static/js/main.0cd9d710.chunk.js"
+  ]
+}

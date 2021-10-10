@@ -16,7 +16,6 @@ class Form extends Component {
     handleChange = ({ currentTarget: input }) => {
         const data = this.state.data;
         this.state.data[input.name] = input.value;
-        console.log("input.value: ", input.value);
         this.setState({ data, submitted: false });
     };
 

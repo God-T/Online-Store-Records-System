@@ -17,11 +17,9 @@ class PurchaseForm extends Form {
         this.setState({ customer: this.props.match.params });
         fetch(`${BACKEND_API_GATE}/api/product/all`).then(res =>
             res.json().then(products => {
-                console.log("invoke componentDidMount", products.length);
                 this.setState({
                     products,
                 });
-                console.log("invoke componentDidMount", this.state);
             })
         );
     }
@@ -40,7 +38,6 @@ class PurchaseForm extends Form {
         fetch(`${BACKEND_API_GATE}/api/purchase/add`, requestOptions)
             .then(res => {
                 if (res.status === 200) {
-                    console.log("in fetch");
                     this.setState({
                         submitted: true,
                         data: {
@@ -50,7 +47,6 @@ class PurchaseForm extends Form {
                 }
             })
             .catch(e => {
-                console.log("failed fetch");
                 console.log("adding error", e);
             });
     };
@@ -69,7 +65,6 @@ class PurchaseForm extends Form {
                   marginTop: "10px",
                   visibility: "hidden",
               };
-        console.log("this.state.products.length:", this.state.products.length);
         return (
             <div style={{ width: "60%" }}>
                 {!this.state.products.length ? (

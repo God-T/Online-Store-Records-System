@@ -36,7 +36,6 @@ class Purchases extends React.Component {
 
     componentDidMount() {
         const { customer_id, customer_name } = this.props.match.params;
-        console.log(customer_id);
         this.setState({
             customer: { id: customer_id, name: customer_name },
         });
@@ -44,21 +43,17 @@ class Purchases extends React.Component {
             `${BACKEND_API_GATE}/api/purchase?customer_id=${customer_id}`
         ).then(res =>
             res.json().then(purchases => {
-                console.log("purchases", purchases);
                 purchases.forEach(purchase => {
                     fetch(
                         `${BACKEND_API_GATE}/api/product/${purchase.product_id}`
                     ).then(res =>
                         res.json().then(product => {
-                            console.log("product", product);
-                            console.log("data", { id: purchase.id, product });
                             this.setState({
                                 purchases: [
                                     { id: purchase.id, product },
                                     ...this.state.purchases,
                                 ],
                             });
-                            console.log("state", this.state.purchases);
                         })
                     );
                 });

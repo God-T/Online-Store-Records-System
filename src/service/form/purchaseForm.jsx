@@ -2,6 +2,7 @@ import React from "react";
 import Form from "../../common/form";
 import { addButton } from "../../uilts/renderFuncs";
 import { withRouter } from "react-router";
+import { BACKEND_API_GATE } from "./../../uilts/settings";
 
 class PurchaseForm extends Form {
     state = {
@@ -14,7 +15,7 @@ class PurchaseForm extends Form {
 
     componentDidMount() {
         this.setState({ customer: this.props.match.params });
-        fetch("http://localhost:5000/api/product/all").then(res =>
+        fetch(`${BACKEND_API_GATE}/api/product/all`).then(res =>
             res.json().then(products => {
                 console.log("invoke componentDidMount", products.length);
                 this.setState({
@@ -36,7 +37,7 @@ class PurchaseForm extends Form {
                 product_id: this.state.data.product_id,
             }),
         };
-        fetch("http://localhost:5000/api/purchase/add", requestOptions)
+        fetch(`${BACKEND_API_GATE}/api/purchase/add`, requestOptions)
             .then(res => {
                 if (res.status === 200) {
                     console.log("in fetch");

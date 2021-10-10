@@ -1,6 +1,7 @@
 import React from "react";
 import Form from "./../../common/form";
 import { addButton } from "../../uilts/renderFuncs";
+import { BACKEND_API_GATE } from "./../../uilts/settings";
 
 class ProductForm extends Form {
     state = {
@@ -26,7 +27,7 @@ class ProductForm extends Form {
                 price: this.state.data.price,
             }),
         };
-        fetch("http://localhost:5000/api/product/add", requestOptions)
+        fetch(`${BACKEND_API_GATE}/api/product/add`, requestOptions)
             .then(res => {
                 if (res.status === 200) {
                     this.setState({

@@ -6,13 +6,15 @@ import Pagination from "../common/pagination";
 import { paginate } from "../uilts/paginate";
 import { addButton } from "../uilts/renderFuncs";
 import { withRouter } from "react-router";
+import { BACKEND_API_GATE } from "./../uilts/settings";
+
 class Purchases extends React.Component {
     state = {
         customer: { id: "", name: "" },
         purchases: [],
         headers: [{ path: "", label: "" }],
         currPage: 1,
-        pageSize: 3,
+        pageSize: 5,
         currSortColumn: { path: "name", order: "asc" },
     };
 
@@ -39,13 +41,13 @@ class Purchases extends React.Component {
             customer: { id: customer_id, name: customer_name },
         });
         fetch(
-            `http://localhost:5000/api/purchase?customer_id=${customer_id}`
+            `${BACKEND_API_GATE}/api/purchase?customer_id=${customer_id}`
         ).then(res =>
             res.json().then(purchases => {
                 console.log("purchases", purchases);
                 purchases.forEach(purchase => {
                     fetch(
-                        `http://localhost:5000/api/product/${purchase.product_id}`
+                        `${BACKEND_API_GATE}/api/product/${purchase.product_id}`
                     ).then(res =>
                         res.json().then(product => {
                             console.log("product", product);
@@ -74,7 +76,7 @@ class Purchases extends React.Component {
                 id: purchase.id,
             }),
         };
-        fetch("http://localhost:5000/api/purchase/delete", requestOptions)
+        fetch(`${BACKEND_API_GATE}/api/purchase/delete`, requestOptions)
             .then(() => {
                 if (productsCount === 1) {
                     this.handlePageChange(this.state.currPage - 1);

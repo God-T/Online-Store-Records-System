@@ -1,6 +1,7 @@
 import React from "react";
 import Form from "./../../common/form";
 import { addButton } from "../../uilts/renderFuncs";
+import { BACKEND_API_GATE } from "./../../uilts/settings";
 
 class CustomerForm extends Form {
     state = {
@@ -26,7 +27,7 @@ class CustomerForm extends Form {
                 contact: this.state.data.contact,
             }),
         };
-        fetch("http://localhost:5000/api/customer/add", requestOptions)
+        fetch(`${BACKEND_API_GATE}/api/customer/add`, requestOptions)
             .then(res => {
                 if (res.status === 200) {
                     this.setState({

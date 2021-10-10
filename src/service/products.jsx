@@ -5,13 +5,14 @@ import Table from "../common/table";
 import Pagination from "../common/pagination";
 import { paginate } from "../uilts/paginate";
 import { addButton } from "../uilts/renderFuncs";
+import { BACKEND_API_GATE } from "./../uilts/settings";
 
 export default class Products extends Component {
     state = {
         products: [],
         headers: [{ path: "", label: "" }],
         currPage: 1,
-        pageSize: 3,
+        pageSize: 5,
         currSortColumn: { path: "name", order: "asc" },
     };
     getHeaders = [
@@ -33,7 +34,7 @@ export default class Products extends Component {
     ];
 
     componentDidMount() {
-        fetch("http://localhost:5000/api/product/all").then(res =>
+        fetch(`${BACKEND_API_GATE}/api/product/all`).then(res =>
             res.json().then(products => {
                 this.setState({
                     products,
@@ -52,7 +53,7 @@ export default class Products extends Component {
                 product_id: product.id,
             }),
         };
-        fetch("http://localhost:5000/api/product/delete", requestOptions)
+        fetch(`${BACKEND_API_GATE}/api/product/delete`, requestOptions)
             .then(res => {
                 if (productsCount === 1) {
                     this.handlePageChange(this.state.currPage - 1);

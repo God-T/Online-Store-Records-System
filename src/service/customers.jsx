@@ -6,13 +6,14 @@ import Table from "../common/table";
 import Pagination from "../common/pagination";
 import { paginate } from "../uilts/paginate";
 import { addButton } from "../uilts/renderFuncs";
+import { BACKEND_API_GATE } from "./../uilts/settings";
 
 export default class Customers extends Component {
     state = {
         customers: [],
         headers: [{ path: "", label: "" }],
         currPage: 1,
-        pageSize: 3,
+        pageSize: 5,
         currSortColumn: { path: "name", order: "asc" },
     };
 
@@ -55,7 +56,7 @@ export default class Customers extends Component {
     ];
 
     componentDidMount() {
-        fetch("http://localhost:5000/api/customer/all").then(res =>
+        fetch(`${BACKEND_API_GATE}/api/customer/all`).then(res =>
             res.json().then(customers => {
                 this.setState({
                     customers,
@@ -74,7 +75,7 @@ export default class Customers extends Component {
                 customer_id: customer.id,
             }),
         };
-        fetch("http://localhost:5000/api/customer/delete", requestOptions)
+        fetch(`${BACKEND_API_GATE}/api/customer/delete`, requestOptions)
             .then(res => {
                 if (customersCount === 1)
                     this.handlePageChange(this.state.currPage - 1);

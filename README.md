@@ -1,4 +1,4 @@
-# Published [here](https://god-t.github.io/Online-store-records-system---ReactJS)
+# Published [here](https://god-t.github.io/Online-store-records-system---ReactJS/)
 
 The backend was deployed on [Herohu](https://expressjs-mysql--serve-react.herokuapp.com/)
 

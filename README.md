@@ -1,4 +1,4 @@
 # Online-Store-Records-System
 Frontend deploy github version
 
-## Published [here](https://God-T.github.io/Online-Store-Records-System)
+## Published [here](https://god-t.github.io/Online-store-records-system---ReactJS/)

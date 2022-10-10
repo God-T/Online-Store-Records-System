@@ -1,30 +1,31 @@
-import React from "react";
-import _ from "lodash";
+import React from 'react';
+import _ from 'lodash';
 
-import Table from "../common/table";
-import Pagination from "../common/pagination";
-import { paginate } from "../uilts/paginate";
-import { addButton } from "../uilts/renderFuncs";
-import { withRouter } from "react-router";
+import Table from '../common/table';
+import Pagination from '../common/pagination';
+import { paginate } from '../uilts/paginate';
+import { addButton } from '../uilts/renderFuncs';
+import { withRouter } from 'react-router';
+import { REACT_APP_API_URL } from '../uilts/env';
 class Purchases extends React.Component {
     state = {
-        customer: { id: "", name: "" },
+        customer: { id: '', name: '' },
         purchases: [],
-        headers: [{ path: "", label: "" }],
+        headers: [{ path: '', label: '' }],
         currPage: 1,
         pageSize: 3,
-        currSortColumn: { path: "name", order: "asc" },
+        currSortColumn: { path: 'name', order: 'asc' },
     };
 
     getHeaders = [
-        { path: "product.name", label: "Product" },
+        { path: 'product.name', label: 'Product' },
         {
-            key: "delete",
+            key: 'delete',
             content: (singlebodyData, count) => (
                 <button
                     onClick={() => this.handleDelete(singlebodyData, count)}
-                    style={{ paddingLeft: "10px", paddingRight: "10px" }}
-                    className="btn btn-danger btn-sm"
+                    style={{ paddingLeft: '10px', paddingRight: '10px' }}
+                    className='btn btn-danger btn-sm'
                 >
                     X
                 </button>
@@ -38,43 +39,45 @@ class Purchases extends React.Component {
         this.setState({
             customer: { id: customer_id, name: customer_name },
         });
-        fetch(
-            `http://localhost:5000/api/purchase?customer_id=${customer_id}`
-        ).then(res =>
-            res.json().then(purchases => {
-                console.log("purchases", purchases);
-                purchases.forEach(purchase => {
-                    fetch(
-                        `http://localhost:5000/api/product/${purchase.product_id}`
-                    ).then(res =>
-                        res.json().then(product => {
-                            console.log("product", product);
-                            console.log("data", { id: purchase.id, product });
-                            this.setState({
-                                purchases: [
-                                    { id: purchase.id, product },
-                                    ...this.state.purchases,
-                                ],
-                            });
-                            console.log("state", this.state.purchases);
-                        })
-                    );
-                });
-            })
+        fetch(`${REACT_APP_API_URL}/purchase?customer_id=${customer_id}`).then(
+            res =>
+                res.json().then(purchases => {
+                    console.log('purchases', purchases);
+                    purchases.forEach(purchase => {
+                        fetch(
+                            `${REACT_APP_API_URL}/product/${purchase.product_id}`
+                        ).then(res =>
+                            res.json().then(product => {
+                                console.log('product', product);
+                                console.log('data', {
+                                    id: purchase.id,
+                                    product,
+                                });
+                                this.setState({
+                                    purchases: [
+                                        { id: purchase.id, product },
+                                        ...this.state.purchases,
+                                    ],
+                                });
+                                console.log('state', this.state.purchases);
+                            })
+                        );
+                    });
+                })
         );
     }
     // /api/product/:product_id
     handleDelete = (purchase, productsCount) => {
         const requestOptions = {
-            method: "DELETE",
+            method: 'DELETE',
             headers: {
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 id: purchase.id,
             }),
         };
-        fetch("http://localhost:5000/api/purchase/delete", requestOptions)
+        fetch(`${REACT_APP_API_URL}/purchase/delete`, requestOptions)
             .then(() => {
                 if (productsCount === 1) {
                     this.handlePageChange(this.state.currPage - 1);
@@ -85,7 +88,7 @@ class Purchases extends React.Component {
                 this.setState({ purchases });
             })
             .catch(e => {
-                console.log("delete error", e);
+                console.log('delete error', e);
             });
     };
 
@@ -114,53 +117,53 @@ class Purchases extends React.Component {
     displayingData = ({ toDisplay, countAll }) => {
         const { pageSize, currPage, currSortColumn } = this.state;
         const addBtn = addButton(
-            "+ New Purchase",
+            '+ New Purchase',
             `/purchases/${this.state.customer.id}/${this.state.customer.name}/new`,
-            "btn btn-success btn-sm"
+            'btn btn-success btn-sm'
         );
         const backBtn = (
-            <div style={{ width: "80%" }}>
-                <div className="d-flex justify-content-between">
+            <div style={{ width: '80%' }}>
+                <div className='d-flex justify-content-between'>
                     <br />
-                    {addButton("Back", "/customers", "btn btn-primary")}
+                    {addButton('Back', '/customers', 'btn btn-primary')}
                 </div>
             </div>
         );
 
         return countAll === 0 ? (
             <React.Fragment>
-                <p style={{ marginRight: "20px", display: "inline-block" }}>
-                    There are no purchases for{" "}
+                <p style={{ marginRight: '20px', display: 'inline-block' }}>
+                    There are no purchases for{' '}
                     <strong
-                        className="text-info"
-                        style={{ fontSize: "larger" }}
+                        className='text-info'
+                        style={{ fontSize: 'larger' }}
                     >
                         {this.state.customer.name}
                     </strong>
                     .
                 </p>
-                <span style={{ position: "relative", bottom: "2px" }}>
+                <span style={{ position: 'relative', bottom: '2px' }}>
                     {addBtn}
                 </span>
                 {backBtn}
             </React.Fragment>
         ) : (
             <React.Fragment>
-                <p style={{ marginRight: "20px", display: "inline-block" }}>
-                    Showing {countAll} purchases for{" "}
+                <p style={{ marginRight: '20px', display: 'inline-block' }}>
+                    Showing {countAll} purchases for{' '}
                     <strong
-                        className="text-info"
-                        style={{ fontSize: "larger" }}
+                        className='text-info'
+                        style={{ fontSize: 'larger' }}
                     >
                         {this.state.customer.name}
                     </strong>
                     .
                 </p>
-                <span style={{ position: "relative", bottom: "2px" }}>
+                <span style={{ position: 'relative', bottom: '2px' }}>
                     {addBtn}
                 </span>
 
-                <div style={{ width: "70%" }}>
+                <div style={{ width: '70%' }}>
                     <Table
                         bodyData={toDisplay}
                         onSort={this.handleSort}
@@ -168,7 +171,7 @@ class Purchases extends React.Component {
                         currSortColumn={currSortColumn}
                         countDisplayed={toDisplay.length}
                     />
-                    <br style={{ height: "300px" }} />
+                    <br style={{ height: '300px' }} />
 
                     <Pagination
                         itemsCount={countAll}
@@ -184,8 +187,8 @@ class Purchases extends React.Component {
 
     render() {
         return (
-            <div className="row">
-                <div className="col">
+            <div className='row'>
+                <div className='col'>
                     {this.displayingData(this.getPagedData())}
                 </div>
             </div>

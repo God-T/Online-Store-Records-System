@@ -1,39 +1,40 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import _ from "lodash";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import _ from 'lodash';
 
-import Table from "../common/table";
-import Pagination from "../common/pagination";
-import { paginate } from "../uilts/paginate";
-import { addButton } from "../uilts/renderFuncs";
+import Table from '../common/table';
+import Pagination from '../common/pagination';
+import { paginate } from '../uilts/paginate';
+import { addButton } from '../uilts/renderFuncs';
+import { REACT_APP_API_URL } from '../uilts/env';
 
 export default class Customers extends Component {
     state = {
         customers: [],
-        headers: [{ path: "", label: "" }],
+        headers: [{ path: '', label: '' }],
         currPage: 1,
         pageSize: 3,
-        currSortColumn: { path: "name", order: "asc" },
+        currSortColumn: { path: 'name', order: 'asc' },
     };
 
     getHeaders = [
-        { path: "name", label: "Name" },
-        { path: "contact", label: "Contact" },
-        { path: "more", label: "More..." },
+        { path: 'name', label: 'Name' },
+        { path: 'contact', label: 'Contact' },
+        { path: 'more', label: 'More...' },
         {
-            key: "view-purchases",
+            key: 'view-purchases',
             content: singlebodyData => (
                 <Link
                     to={`/purchases/${singlebodyData.id}/${singlebodyData.name}`}
                 >
                     <button
                         style={{
-                            paddingLeft: "10px",
-                            paddingRight: "10px",
-                            paddingTop: "2px",
-                            paddingBottom: "2px",
+                            paddingLeft: '10px',
+                            paddingRight: '10px',
+                            paddingTop: '2px',
+                            paddingBottom: '2px',
                         }}
-                        className="btn btn-outline-info"
+                        className='btn btn-outline-info'
                     >
                         View Purchases
                     </button>
@@ -41,12 +42,12 @@ export default class Customers extends Component {
             ),
         },
         {
-            key: "delete",
+            key: 'delete',
             content: (singlebodyData, count) => (
                 <button
                     onClick={() => this.handleDelete(singlebodyData, count)}
-                    style={{ paddingLeft: "10px", paddingRight: "10px" }}
-                    className="btn btn-danger btn-sm"
+                    style={{ paddingLeft: '10px', paddingRight: '10px' }}
+                    className='btn btn-danger btn-sm'
                 >
                     X
                 </button>
@@ -55,7 +56,7 @@ export default class Customers extends Component {
     ];
 
     componentDidMount() {
-        fetch("http://localhost:5000/api/customer/all").then(res =>
+        fetch(`${REACT_APP_API_URL}/customer/all`).then(res =>
             res.json().then(customers => {
                 this.setState({
                     customers,
@@ -66,15 +67,15 @@ export default class Customers extends Component {
 
     handleDelete = (customer, customersCount) => {
         const requestOptions = {
-            method: "DELETE",
+            method: 'DELETE',
             headers: {
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 customer_id: customer.id,
             }),
         };
-        fetch("http://localhost:5000/api/customer/delete", requestOptions)
+        fetch(`${REACT_APP_API_URL}/customer/delete`, requestOptions)
             .then(res => {
                 if (customersCount === 1)
                     this.handlePageChange(this.state.currPage - 1);
@@ -84,7 +85,7 @@ export default class Customers extends Component {
                 this.setState({ customers });
             })
             .catch(e => {
-                console.log("delete error", e);
+                console.log('delete error', e);
             });
     };
 
@@ -113,23 +114,23 @@ export default class Customers extends Component {
     displayingData = ({ toDisplay, countAll }) => {
         const { pageSize, currPage, currSortColumn } = this.state;
         const addBtn = addButton(
-            "+ New Customer",
-            "/customers/new",
-            "btn btn-success btn-sm"
+            '+ New Customer',
+            '/customers/new',
+            'btn btn-success btn-sm'
         );
         return countAll === 0 ? (
             <React.Fragment>
-                <p style={{ marginRight: "20px", display: "inline-block" }}>
+                <p style={{ marginRight: '20px', display: 'inline-block' }}>
                     There are no customers.
                 </p>
                 {addBtn}
             </React.Fragment>
         ) : (
             <React.Fragment>
-                <p style={{ marginRight: "20px", display: "inline-block" }}>
+                <p style={{ marginRight: '20px', display: 'inline-block' }}>
                     Showing {countAll} customers.
                 </p>
-                <span style={{ marginTop: "3px" }}>{addBtn}</span>
+                <span style={{ marginTop: '3px' }}>{addBtn}</span>
                 <Table
                     bodyData={toDisplay}
                     onSort={this.handleSort}
@@ -137,7 +138,7 @@ export default class Customers extends Component {
                     currSortColumn={currSortColumn}
                     countDisplayed={toDisplay.length}
                 />
-                <br style={{ height: "300px" }} />
+                <br style={{ height: '300px' }} />
 
                 <Pagination
                     itemsCount={countAll}
@@ -151,8 +152,8 @@ export default class Customers extends Component {
 
     render() {
         return (
-            <div className="row">
-                <div className="col">
+            <div className='row'>
+                <div className='col'>
                     {this.displayingData(this.getPagedData())}
                 </div>
             </div>

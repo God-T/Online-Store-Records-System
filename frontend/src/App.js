@@ -1,3 +1,2 @@
-import Home from "./home/home";
-
+import Home from './home/home';
 export const App = () => <Home />;

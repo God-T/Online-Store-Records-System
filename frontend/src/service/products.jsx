@@ -1,30 +1,31 @@
-import React, { Component } from "react";
-import _ from "lodash";
+import React, { Component } from 'react';
+import _ from 'lodash';
 
-import Table from "../common/table";
-import Pagination from "../common/pagination";
-import { paginate } from "../uilts/paginate";
-import { addButton } from "../uilts/renderFuncs";
+import Table from '../common/table';
+import Pagination from '../common/pagination';
+import { paginate } from '../uilts/paginate';
+import { addButton } from '../uilts/renderFuncs';
+import { REACT_APP_API_URL } from '../uilts/env';
 
 export default class Products extends Component {
     state = {
         products: [],
-        headers: [{ path: "", label: "" }],
+        headers: [{ path: '', label: '' }],
         currPage: 1,
         pageSize: 3,
-        currSortColumn: { path: "name", order: "asc" },
+        currSortColumn: { path: 'name', order: 'asc' },
     };
     getHeaders = [
-        { path: "name", label: "Name" },
-        { path: "price", label: "Price" },
-        { path: "more", label: "More..." },
+        { path: 'name', label: 'Name' },
+        { path: 'price', label: 'Price' },
+        { path: 'more', label: 'More...' },
         {
-            key: "delete",
+            key: 'delete',
             content: (singlebodyData, count) => (
                 <button
                     onClick={() => this.handleDelete(singlebodyData, count)}
-                    style={{ paddingLeft: "10px", paddingRight: "10px" }}
-                    className="btn btn-danger btn-sm"
+                    style={{ paddingLeft: '10px', paddingRight: '10px' }}
+                    className='btn btn-danger btn-sm'
                 >
                     X
                 </button>
@@ -33,7 +34,7 @@ export default class Products extends Component {
     ];
 
     componentDidMount() {
-        fetch("http://localhost:5000/api/product/all").then(res =>
+        fetch(`${REACT_APP_API_URL}/product/all`).then(res =>
             res.json().then(products => {
                 this.setState({
                     products,
@@ -44,15 +45,15 @@ export default class Products extends Component {
 
     handleDelete = (product, productsCount) => {
         const requestOptions = {
-            method: "DELETE",
+            method: 'DELETE',
             headers: {
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 product_id: product.id,
             }),
         };
-        fetch("http://localhost:5000/api/product/delete", requestOptions)
+        fetch(`${REACT_APP_API_URL}/product/delete`, requestOptions)
             .then(res => {
                 if (productsCount === 1) {
                     this.handlePageChange(this.state.currPage - 1);
@@ -63,7 +64,7 @@ export default class Products extends Component {
                 this.setState({ products });
             })
             .catch(e => {
-                console.log("delete error", e);
+                console.log('delete error', e);
             });
     };
 
@@ -92,23 +93,23 @@ export default class Products extends Component {
     displayingData = ({ toDisplay, countAll }) => {
         const { pageSize, currPage, currSortColumn } = this.state;
         const addBtn = addButton(
-            "+ New Product",
-            "/products/new",
-            "btn btn-success btn-sm"
+            '+ New Product',
+            '/products/new',
+            'btn btn-success btn-sm'
         );
         return countAll === 0 ? (
             <React.Fragment>
-                <p style={{ marginRight: "20px", display: "inline-block" }}>
+                <p style={{ marginRight: '20px', display: 'inline-block' }}>
                     There are no products.
                 </p>
                 {addBtn}
             </React.Fragment>
         ) : (
             <React.Fragment>
-                <p style={{ marginRight: "20px", display: "inline-block" }}>
+                <p style={{ marginRight: '20px', display: 'inline-block' }}>
                     Showing {countAll} products.
                 </p>
-                <span style={{ marginTop: "3px" }}>{addBtn}</span>
+                <span style={{ marginTop: '3px' }}>{addBtn}</span>
                 <Table
                     bodyData={toDisplay}
                     onSort={this.handleSort}
@@ -116,7 +117,7 @@ export default class Products extends Component {
                     currSortColumn={currSortColumn}
                     countDisplayed={toDisplay.length}
                 />
-                <br style={{ height: "300px" }} />
+                <br style={{ height: '300px' }} />
 
                 <Pagination
                     itemsCount={countAll}
@@ -130,8 +131,8 @@ export default class Products extends Component {
 
     render() {
         return (
-            <div className="row">
-                <div className="col">
+            <div className='row'>
+                <div className='col'>
                     {this.displayingData(this.getPagedData())}
                 </div>
             </div>

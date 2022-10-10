@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import React from "react";
+import { Link } from 'react-router-dom';
+import React from 'react';
 
 export const addButton = (title, toPath, bootstrap_className) => (
     <React.Fragment>
